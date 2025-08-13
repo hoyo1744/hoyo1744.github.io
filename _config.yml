@@ -44,6 +44,7 @@ content:
       - layout: left
         title: 안랩
         sub_title: 엔드포인트 플랫폼 개발
+        caption: 2019.09 ~ 2021.12
         quote: >
           엔드포인트 플랫폼 전반적인 시스템 개발 및 성능 개선
         description: | 
@@ -53,6 +54,17 @@ content:
           - 레거시 배치 서비스 개선으로 서비스 안정화
           - 테스트 환경 및 **BVT(Build Verification Test)** 자동화 구축으로 인력 효율화
 
+      - layout: left
+        title: 안랩
+        sub_title: Linux 클라이언트 개발
+        caption: 2022.01 ~ 현재
+        quote: >
+          C++ 리눅스 클라이언트 개발
+        description: | 
+          - 리눅스 서버 취약점 패키지 관리 클라이언트 개발
+          - 리눅스 서버 취약점 조치 클라이언트 개발
+        
+
   - title: Project # Title for the section
     layout: list # Type of content section (list/text)
     content:
@@ -60,22 +72,22 @@ content:
         title: 게이트웨이 도입
         sub_title: 엔드포인트 플랫폼
         quote: >
-          BFF 서비스로서 인증 통합 및 캐싱 적용으로 서비스 트래픽 처리율 개선
+          BFF 서비스로서 **인증 통합** 및 **캐싱 적용**으로 **서비스 트래픽 처리율** 개선
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 최대 동시 연결 클라이언트가 12만대로 제한되어 성능 개선 필요  
-          - **원인** : 인증/인가 및 Read/Write 트래픽이 Blocking 작업으로 인한 자원 고갈  
+          - **문제** : 최대 동시 연결 클라이언트가 **12만대**로 제한되어 성능 개선 필요  
+          - **원인** : 인증/인가 및 Read/Write 트래픽이 **Blocking 작업**으로 인한 자원 고갈  
           - **해결**  
-            - 여러 서비스에서 중복으로 검증하던 인증 로직 통합  
-            - Read(캐싱) / Write 트래픽 분리로 처리율 향상  
-            - Write 서비스의 Tomcat 스레드 수 및 Connection Pool 최적화  
+            - 여러 서비스에서 **중복**으로 검증하던 인증 로직 통합  
+            - **Read(캐싱)** / **Write** 트래픽 분리로 처리율 향상  
+            - Write 서비스의 **Tomcat 스레드 수** 및 **Connection Pool** 최적화  
           - **성과**  
             - 인증/인가 로직 통합으로 유지보수 효율화  
-            - Read 병목 제거 및 Write TPS **30%** 개선
+            - **Read 병목 제거** 및 Write TPS **30%** 개선
       - layout: left
         title: Kafka Producer 개선
         sub_title: 앤드포인트 플랫폼
         quote: >
-          Kafka 배치 전송 및 DLQ 도입으로 대용량 트래픽 환경에서 메시지 처리량 개선
+          Kafka 배치 전송 및 **DLQ 도입**으로 대용량 트래픽 환경에서 메시지 처리량 개선
         description: | # this will include new lines to allow paragraphs
           - **문제** : 대용량 트래픽 환경에서 메시지 비동기 처리 지연
           - **원인** : Producer가 메시지를 단건 전송
@@ -83,7 +95,7 @@ content:
             - Kafka Producer 배치 전송 설정
             - DLQ(Dead Letter Queue) 도입: 전송 실패 메시지를 별도 토픽에 보관
           - **성과**
-            - DLQ 유실 방지 및 TPS 30% 개선
+            - DLQ 유실 방지 및 **TPS 30%** 개선
       - layout: left
         title: 레거시 배치 서비스 개선
         sub_title: 엔드포인트 플랫폼
@@ -106,7 +118,7 @@ content:
           BVT 자동화로 휴먼 에러 최소화
         description: | # this will include new lines to allow paragraphs
           - ELK 스택으로 클라이언트 BVT 자동화 환경 구축 및 테스트 실패시 사내 메신저 알림 연동
-          - 팀 내 테스트 작성 추진 및 테스트 2000건 이상 작성
+          - 팀 내 테스트 작성 추진 및 테스트 **2000건** 이상 작성
       - layout: left
         title: 서비스 안정화
         sub_title: 엔드포인트 플랫폼
