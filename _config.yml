@@ -28,13 +28,25 @@ additional_links:
 about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  3년차 백엔드 개발자로 **엔드포인트 플랫폼**을 개발했습니다.  
-  대규모 트래픽 환경에서도 안정적으로 운영될 수 있는 시스템을 만들기 위해 **서비스 안정화** 및 **성능 개선**에 주력하고 있습니다.  
-  개발 과정에서 원칙을 지키되 실용적인 방식을 선택하며, 팀원들과의 기술 토론을 통해 **유지보수성과 성능을 모두 고려한 해결책**을 찾습니다.  
-  학습한 내용과 문제 해결 경험은 블로그에 기록하여 **개인의 성장 → 조직의 성장**으로 확장시키는 것을 목표로 합니다.
+  >소개  
+
+  3년차 백엔드 개발자로 **엔드포인트 플랫폼**을 직접 개발·운영하고 있습니다.  
+  국내 **2,000여 고객사**가 사용하는 서비스를 담당하고 있으며, 최대 **DAU 20만** 규모 고객사의 트래픽을 안정적으로 지원합니다.
+
+  >업무 역량  
+
+  대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 **서비스 안정화**와 **성능 개선**에 집중하고 있습니다.
+
+  >개발 철학  
+
+  원칙을 지키되, 상황에 맞는 **실용적인 선택**을 중시합니다.  
+  팀원들과의 기술 토론을 통해 **유지보수성과 성능**을 함께 고려한 해결책을 도출합니다.
+
+  >성장과 공유  
+
+  학습한 내용과 문제 해결 경험은 블로그에 기록하고 있으며, 이를 통해 **개인의 성장 → 조직의 성장**으로 확장하는 것을 지향합니다.
 
 content:
-
   - title: Experience 
     layout: list 
     content:
@@ -60,18 +72,21 @@ content:
         description: | 
           - 리눅스 서버 취약점 패키지 관리 클라이언트 개발
           - 리눅스 서버 취약점 조치 클라이언트 개발
+
         
 
-  - title: Project # Title for the section
+  - title: Project_back # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
         title: 게이트웨이 도입
         sub_title: 엔드포인트 플랫폼
         quote: >
-          BFF 서비스로서 **인증 통합** 및 **캐싱 적용**으로 **서비스 트래픽 처리율** 개선
+          BFF 서비스로서 인증 통합 및 캐싱 적용으로 서비스 트래픽 처리율 개선
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 최대 동시 연결 클라이언트가 **12만대**로 제한되어 성능 개선 필요  
+          - **문제** :
+            - 은행,공기업과 같은 사이트에서 출근 시간인 09:00에 트랙픽이 몰려 최대 연결 클라이언트가 **12만대**로 제한
+            - 신규 사이트 요구사항에 따라 **20만대** 지원이 필요한 상황
           - **원인** : 인증/인가 및 Read/Write 트래픽이 **Blocking 작업**으로 인한 자원 고갈  
           - **해결**  
             - 여러 서비스에서 **중복**으로 검증하던 인증 로직 통합  
@@ -84,30 +99,32 @@ content:
         title: Kafka Producer 개선
         sub_title: 앤드포인트 플랫폼
         quote: >
-          Kafka 배치 전송 및 **DLQ 도입**으로 대용량 트래픽 환경에서 메시지 처리량 개선
+          Kafka 배치 전송 및 DLQ 도입으로 대용량 트래픽 환경에서 메시지 처리량 개선
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 대용량 트래픽 환경에서 메시지 비동기 처리 지연
+          - **문제** : 
+            - 출근 시간인 09:00이나 V3와 같은 클라이언트가 서버를 통해 동시에 업그레이드가 진행되는 대용량 트래픽 환경이 존재
+            - 대용량 트래픽 환경에서 메시지 비동치 처리가 지연됨
           - **원인** : Producer가 메시지를 단건 전송
           - **해결**
             - Kafka Producer 배치 전송 설정
             - DLQ(Dead Letter Queue) 도입: 전송 실패 메시지를 별도 토픽에 보관
           - **성과**
-            - DLQ 유실 방지 및 **TPS 30%** 개선
+            - DLQ 유실 방지 및 **TPS 15%** 개선
       - layout: left
         title: Legacy Batch Servie 개선
         sub_title: 엔드포인트 플랫폼
         quote: >
           Spring Batch 적용으로 서비스 안정화
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 자바 기본 스레드로 구현되어 Exception에 취약해 서비스 중지 재현
+          - **문제** : 
+            - V3와 같은 클라이언트에서 협의되지 않은 포맷의 이벤트 로그 전송시 서비스 중단 문제 발생
           - **원인**
-            - Exception 핸들링 미흡
+            - 예외 핸들링 미흡
             - 잘못된 데이터 포맷에 대한 Skip, retry 정책 미흡
           - **해결**
-            - Spring Batch를 적용시켜 Exception, skip, retry 정책 고도화
-            - DLQ(Dead Letter Queue) 도입: 전송 실패 메시지를 별도 토픽에 보관
+            - Spring Batch를 적용으로 Exception, skip, retry 정책 고도화
           - **성과**
-            - 배치 서비스 이슈 발생 건 수 **50% 이상 감소**
+            - 배치 서비스 이슈 발생 건 수 **70% 이상 감소**
       - layout: left
         title: 테스트 자동화
         sub_title: 엔드포인트 플랫폼
@@ -125,8 +142,6 @@ content:
           - postgres에서 ShareLock과 Row ExclusiveLock의 충돌로 deadLock 발생으로 인한 CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
           - 13초 이상 소요되는 쿼리를 CTE를 활용해 1.3로 성능 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL-%EC%8A%A4%EC%B9%BC%EB%9D%BC-%EC%84%9C%EB%B8%8C-%EC%BF%BC%EB%A6%AC%EB%A5%BC-CTE%EB%A1%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0))
 
-
-
   - title: Activity
     layout: list # Type of content section (list/text)
     content:
@@ -134,7 +149,7 @@ content:
         title: 백엔드 부트캠프 
         sub_title: Loopers 현직자 백엔드 과정
         description: | # this will include new lines to allow paragraphs
-          루프팩 벡엔드 1기 교육 수료
+          루프팩 벡엔드 1기 교육 
 
   - title: Skill # Title for the section
     layout: list # Type of content section (list/text)
