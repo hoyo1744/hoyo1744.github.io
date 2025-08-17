@@ -76,7 +76,7 @@ content:
 
         
 
-  - title: Project_back # Title for the section
+  - title: Project # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
