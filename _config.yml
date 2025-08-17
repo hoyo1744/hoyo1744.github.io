@@ -58,10 +58,11 @@ content:
           국내 2000여 고객사에서 사용중인 엔드포인트 플랫폼 전반적인 시스템 개발 및 성능 개선(최대 DAU 12만)
         description: | 
           - 인덱스, 쿼리 튜닝, 시스템 설정 최적화를 통한 성능 개선
-          - API 게이트웨이 도입으로 트래픽 처리 향상
-          - Kafka Producer 병목 해소
-          - 레거시 배치 서비스 개선으로 서비스 안정화
+          - API 게이트웨이 도입으로 **트래픽 처리 향상**
+          - Kafka Producer **병목 해소**
+          - 레거시 배치 서비스 개선으로 **서비스 안정화**
           - 테스트 환경 및 **BVT(Build Verification Test)** 자동화 구축으로 인력 효율화
+          - RDB → 비정규화 문서로 변환해 **조회 최적화**
 
       - layout: left
         title: 안랩
@@ -125,6 +126,20 @@ content:
             - Spring Batch를 적용으로 Exception, skip, retry 정책 고도화
           - **성과**
             - 배치 서비스 이슈 발생 건 수 **70% 이상 감소**
+      - layout: left
+        title: 보고서 조회용 데이터 분리로 조회 최적화
+        sub_title: 엔드포인트 플랫폼
+        quote: > 
+          RDB → 비정규화 문서로 변환해 조회 최적화
+        description: | # this will include new lines to allow paragraphs
+          - **문제** : 
+            - 관리자가 지난 1년간 악성 코드 감염 정보를 확인하기 위한 보고서 생성시 rdb timeout 발생
+          - **원인**
+            - 대형 클라이언트를 보유한 사이트에서 rdb 쿼리 수행시 timeout 발생
+          - **해결**
+            - 배치프로세스에서 주기적으로 rdb에 저장된 데이터를 읽기 전용 비정규화문서로 변환해 mongodb에 스냅샷 저장
+            - 관리자가 보고서 생성시, mongodb에 저장된 스냅샷 데이터로 조회하도록 변경
+        
       - layout: left
         title: 테스트 자동화
         sub_title: 엔드포인트 플랫폼
