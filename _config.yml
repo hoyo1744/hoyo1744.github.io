@@ -30,7 +30,7 @@ about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
   >소개  
 
-  3년차 백엔드 개발자로 **엔드포인트 플랫폼**을 직접 개발·운영하고 있습니다.  
+  6년차 백엔드 개발자로 **엔드포인트 플랫폼**을 개발·운영하고 있습니다.  
   국내 **2,000여 고객사**가 사용하는 서비스를 담당하고 있으며, 최대 **DAU 20만** 규모 고객사의 트래픽을 안정적으로 지원합니다.
 
   >업무 역량  
@@ -55,11 +55,11 @@ content:
         sub_title: 엔드포인트 플랫폼 개발
         caption: 2022.01 ~ 현재
         quote: >
-          국내 2000여 고객사에서 사용중인 엔드포인트 플랫폼 전반적인 시스템 개발 및 성능 개선(최대 DAU 20만)
+          국내 2,000여 고객사에서 사용중인 엔드포인트 플랫폼 전반적인 시스템 개발 및 성능 개선(최대 DAU 20만)
         description: | 
           - 인덱스, 쿼리 튜닝, 시스템 설정 최적화를 통한 성능 개선
-          - API 게이트웨이 도입으로 **트래픽 처리 향상**
-          - Kafka Producer **병목 해소**
+          - API 게이트웨이에서 Read/Write 트래픽 분리로 **처리율 향상**
+          - Kafka Consumer **병목 해소**
           - 레거시 배치 서비스 개선으로 **서비스 안정화**
           - 테스트 환경 및 **BVT(Build Verification Test)** 자동화 구축으로 인력 효율화
           - RDB → 비정규화 문서로 변환해 **조회 최적화**
@@ -80,13 +80,13 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: 게이트웨이 도입
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">인증 통합 및 Read/Write 트래픽 분리로 처리율 개선</span>
+        # sub_title: 엔드포인트 플랫폼
         quote: >
-          BFF 서비스로서 인증 통합 및 캐싱 적용으로 서비스 트래픽 처리율 개선
+          API 게이트웨이 도입
         description: | # this will include new lines to allow paragraphs
           - **문제** :
-            - 은행,공기업과 같은 사이트에서 출근 시간인 09:00에 트랙픽이 몰려 최대 연결 클라이언트가 **12만대**로 제한
+            - 출근 시간인 09:00에 트래픽이 몰려 최대 연결 클라이언트가 **12만대**로 제한
             - 신규 사이트 요구사항에 따라 **20만대** 지원이 필요한 상황
           - **원인** : 인증/인가 및 Read/Write 트래픽이 **Blocking 작업**으로 인한 자원 고갈  
           - **해결**  
@@ -97,22 +97,22 @@ content:
             - 인증/인가 로직 통합으로 유지보수 효율화  
             - **Read 병목 제거** 및 Write TPS **30%** 개선
       - layout: left
-        title: Kafka Producer 개선
-        sub_title: 앤드포인트 플랫폼
+        title: Kafka 배치 전송 및 DLQ 도입으로 대용량 트래픽 환경에서 메시지 처리량 개선
+        # sub_title: 앤드포인트 플랫폼
         quote: >
-          Kafka 배치 전송 및 DLQ 도입으로 대용량 트래픽 환경에서 메시지 처리량 개선
+          Kafka Consumer 병목 개선
         description: | # this will include new lines to allow paragraphs
           - **문제** : 
-            - 출근 시간인 09:00이나 V3와 같은 클라이언트가 서버를 통해 동시에 업그레이드가 진행되는 대용량 트래픽 환경이 존재
+            - 출근 시간인 09:00에 V3와 같은 클라이언트가 서버를 통해 동시에 업그레이드가 진행되는 대용량 트래픽 환경이 존재
             - 대용량 트래픽 환경에서 메시지 비동치 처리가 지연됨
-          - **원인** : Producer가 메시지를 단건 전송
+          - **원인** : Producer가 메시지를 단건 전송 및 Consumer 단건 처리
           - **해결**
-            - Kafka Producer 배치 전송 설정
+            - Kafka Producer, Consumer 배치 전송 및 리스너 처리
             - DLQ(Dead Letter Queue) 도입: 전송 실패 메시지를 별도 토픽에 보관
           - **성과**
             - DLQ 유실 방지 및 **TPS 15%** 개선
       - layout: left
-        title: Legacy Batch Servie 개선
+        title: Legacy Batch Servie 개선으로 티켓 발행 건 수 감소
         sub_title: 엔드포인트 플랫폼
         quote: >
           Spring Batch 적용으로 서비스 안정화
@@ -133,12 +133,12 @@ content:
           RDB → 비정규화 문서로 변환해 조회 최적화
         description: | # this will include new lines to allow paragraphs
           - **문제** : 
-            - 관리자가 지난 1년간 악성 코드 감염 정보를 확인하기 위한 보고서 생성시 rdb timeout 발생
+            - 관리자가 지난 1년간 악성 코드 감염 정보를 확인하기 위한 통계 보고서 생성 실패 
           - **원인**
-            - 대형 클라이언트를 보유한 사이트에서 rdb 쿼리 수행시 timeout 발생
+            - Postgres에서 1년 간 데이터에 대해서 쿼리 수행 시 Time Out 발생
           - **해결**
-            - 배치프로세스에서 주기적으로 rdb에 저장된 데이터를 읽기 전용 비정규화문서로 변환해 mongodb에 스냅샷 저장
-            - 관리자가 보고서 생성시, mongodb에 저장된 스냅샷 데이터로 조회하도록 변경
+            - 배치프로세스에서 주기적으로 rdb에 저장된 데이터를 읽기 전용 비정규화문서로 변환해 MongoDB에 스냅샷 저장
+            - 관리자가 보고서 생성시, MongoDB에 저장된 스냅샷 데이터로 조회하도록 변경
         
       - layout: left
         title: 테스트 자동화
@@ -146,15 +146,15 @@ content:
         quote: > 
           BVT 자동화로 휴먼 에러 최소화
         description: | # this will include new lines to allow paragraphs
-          - ELK 스택으로 클라이언트 BVT 자동화 환경 구축 및 테스트 실패시 사내 메신저 알림 연동
-          - 팀 내 테스트 작성 추진 및 테스트 **2000건** 이상 작성
+          - ELK 스택으로 클라이언트 BVT(Build Verification Test) 자동화 환경 구축 및 테스트 실패시 사내 메신저 알림 연동
+          - 팀 내 테스트 작성 추진 및 테스트 **2,000건** 이상 작성
       - layout: left
         title: 서비스 안정화
         sub_title: 엔드포인트 플랫폼
         quote: >
           인덱스 및 쿼리 튜닝으로 사용자 경험 개선
         description: | # this will include new lines to allow paragraphs
-          - postgres에서 ShareLock과 Row ExclusiveLock의 충돌로 deadLock 발생으로 인한 CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
+          - Postgres에서 ShareLock과 Row ExclusiveLock의 충돌로 데드락 발생, CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
           - 13초 이상 소요되는 쿼리를 CTE를 활용해 1.3로 성능 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL-%EC%8A%A4%EC%B9%BC%EB%9D%BC-%EC%84%9C%EB%B8%8C-%EC%BF%BC%EB%A6%AC%EB%A5%BC-CTE%EB%A1%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0))
 
   - title: Activity
@@ -164,7 +164,7 @@ content:
         title: 백엔드 부트캠프 
         sub_title: Loopers 현직자 백엔드 과정
         description: | # this will include new lines to allow paragraphs
-          루프팩 벡엔드 1기 교육 
+          루프팩 백엔드 1기 교육 
 
   - title: Skill # Title for the section
     layout: list # Type of content section (list/text)
