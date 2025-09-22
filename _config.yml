@@ -30,21 +30,23 @@ about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
   >소개  
 
-  3년차 백엔드 개발자로 **엔드포인트 플랫폼**을 직접 개발·운영하고 있습니다.  
-  국내 **2,000여 고객사**가 사용하는 서비스를 담당하고 있으며, 최대 **DAU 20만** 규모 고객사의 트래픽을 안정적으로 지원합니다.
+  6년차 백엔드 개발자로 엔드포인트 플랫폼을 개발·운영하고 국내 ***2,000여 고객사***가 사용하는 서비스에서 Gateway·Admin·Batch를 담당하고 있습니다.
+
 
   >업무 역량  
 
-  대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 **서비스 안정화**와 **성능 개선**에 집중하고 있습니다.
+  대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 ***서비스 안정화***와 ***성능 개선***에 집중하고 있습니다.
+  
+  피크타임 기준 파드당 ***약 455 TPS***를 안정적으로 처리하고 최대 ***20만 명의 활성 사용자*** 트래픽을 지원하고 있습니다.
 
   >개발 철학  
 
-  원칙을 지키되, 상황에 맞는 **실용적인 선택**을 중시합니다.  
-  팀원들과의 기술 토론을 통해 **유지보수성과 성능**을 함께 고려한 해결책을 도출합니다.
+  원칙을 지키되, 상황에 맞는 ***실용적인 선택***을 중시합니다.  
+  팀원들과의 기술 토론을 통해 ***유지보수성과 성능***을 함께 고려한 해결책을 도출합니다.
 
   >성장과 공유  
 
-  학습한 내용과 문제 해결 경험은 블로그에 기록하고 있으며, 이를 통해 **개인의 성장 → 조직의 성장**으로 확장하는 것을 지향합니다.
+  학습한 내용과 문제 해결 경험은 블로그에 기록하고 있으며, 이를 통해 ***개인의 성장 → 조직의 성장***으로 확장하는 것을 지향합니다.
 
 content:
   - title: Experience 
@@ -55,14 +57,14 @@ content:
         sub_title: 엔드포인트 플랫폼 개발
         caption: 2022.01 ~ 현재
         quote: >
-          국내 2000여 고객사에서 사용중인 엔드포인트 플랫폼 전반적인 시스템 개발 및 성능 개선(최대 DAU 20만)
+          20만 명 활성 사용자 · 파드당 455 TPS를 안정적으로 처리하는 엔드포인트 플랫폼 개발 및 성능·안정화 주도
         description: | 
           - 인덱스, 쿼리 튜닝, 시스템 설정 최적화를 통한 성능 개선
-          - API 게이트웨이 도입으로 **트래픽 처리 향상**
-          - Kafka Producer **병목 해소**
-          - 레거시 배치 서비스 개선으로 **서비스 안정화**
-          - 테스트 환경 및 **BVT(Build Verification Test)** 자동화 구축으로 인력 효율화
-          - RDB → 비정규화 문서로 변환해 **조회 최적화**
+          - API 게이트웨이에서 Read·Write 트래픽 분리로 ***처리율 향상***
+          - Kafka Consumer ***병목 해소***
+          - 레거시 배치 서비스 개선으로 ***서비스 안정화***
+          - 테스트 환경 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
+          - PostgreSQL → MongoDB로 변환해 ***조회 최적화***
 
       - layout: left
         title: 안랩
@@ -80,81 +82,99 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: 게이트웨이 도입
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">인증 통합 및 Read·Write 트래픽 분리로 처리율 개선</span>
+        # sub_title: 엔드포인트 플랫폼
         quote: >
-          BFF 서비스로서 인증 통합 및 캐싱 적용으로 서비스 트래픽 처리율 개선
+          API Gateway 도입 및 Read·Write 트래픽 분리
         description: | # this will include new lines to allow paragraphs
-          - **문제** :
-            - 은행,공기업과 같은 사이트에서 출근 시간인 09:00에 트랙픽이 몰려 최대 연결 클라이언트가 **12만대**로 제한
-            - 신규 사이트 요구사항에 따라 **20만대** 지원이 필요한 상황
-          - **원인** : 인증/인가 및 Read/Write 트래픽이 **Blocking 작업**으로 인한 자원 고갈  
-          - **해결**  
-            - 여러 서비스에서 **중복**으로 검증하던 인증 로직을 게이트웨이로 통합  
-            - 게이트웨이에서 **Read(캐싱)** / **Write** 트래픽 분리로 처리율 향상  
-            - Write 서비스의 **Tomcat 스레드 수** 및 **Connection Pool** 최적화  
-          - **성과**  
+          - ***문제***
+            - 피크타임에 트래픽이 몰리면서 ***SLA(응답 1초, 가용성 99.9%)***를 충족하지 못하는 문제 발생
+          - ***원인***
+            - 인증/인가 및 Read·Write 트래픽이 ***Blocking 작업***으로 인한 자원 고갈  
+          - ***해결***  
+            - 여러 서비스에서 ***중복***으로 검증하던 인증 로직을 ***API Gateway***로 통합  
+            - API Gateway에서 ***Read(캐싱)***·***Write(원장)*** 트래픽 분리로 처리율 향상  
+            - Write 경로의 ***Tomcat 스레드 수*** 및 ***Connection Pool*** 최적화  
+          - ***성과***  
+            - SLA 재달성(가용성 99.9%, P99 1초 이내)
             - 인증/인가 로직 통합으로 유지보수 효율화  
-            - **Read 병목 제거** 및 Write TPS **30%** 개선
+            - ***Read 병목 제거*** 및 Write TPS ***30%*** 개선
+            
       - layout: left
-        title: Kafka Producer 개선
-        sub_title: 앤드포인트 플랫폼
+        title: <span style="font-size:18px">Kafka Consumer·Producer 배치 처리로 상태 처리 지연 문제 개선</span>
+        # sub_title: 앤드포인트 플랫폼
         quote: >
-          Kafka 배치 전송 및 DLQ 도입으로 대용량 트래픽 환경에서 메시지 처리량 개선
+          Kafka 메시지 처리 성능 개선
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 
-            - 출근 시간인 09:00이나 V3와 같은 클라이언트가 서버를 통해 동시에 업그레이드가 진행되는 대용량 트래픽 환경이 존재
-            - 대용량 트래픽 환경에서 메시지 비동치 처리가 지연됨
-          - **원인** : Producer가 메시지를 단건 전송
-          - **해결**
-            - Kafka Producer 배치 전송 설정
-            - DLQ(Dead Letter Queue) 도입: 전송 실패 메시지를 별도 토픽에 보관
-          - **성과**
-            - DLQ 유실 방지 및 **TPS 15%** 개선
+          - ***문제***
+            - 피크타임에 클라이언트 상태 처리가 지연되는 문제 발생
+          - ***원인***
+            - Producer가 메시지를 단건 전송하고 Consumer도 단건 처리하여 처리량 저하
+          - ***해결***
+            - Kafka Producer·Consumer에 ***배치 전송 및 처리*** 적용
+            - ***Outbox Pattern*** 및 ***DLQ(Dead Letter Queue)*** 도입으로 메시지 유실 대비
+          - ***성과***
+            - 메시지 유실 방지 및 메시지 처리 ***TPS 15%*** 개선
+            - 상태 처리 지연 해소 및 메시지 유실에 대한 안정성 강화
       - layout: left
-        title: Legacy Batch Servie 개선
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">Legacy Batch Servie 개선으로 유지보수 효율화</span>
+        #sub_title: 엔드포인트 플랫폼
         quote: >
-          Spring Batch 적용으로 서비스 안정화
+          Spring Batch 적용으로 인한 서비스 안정화
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 
-            - V3와 같은 클라이언트에서 협의되지 않은 포맷의 이벤트 로그 전송시 서비스 중단 문제 발생
-          - **원인**
+          - ***문제***
+            - 협의되지 않은 이벤트 로그 전송시 서비스 중단 문제 발생
+          - ***원인***
             - 예외 핸들링 미흡
             - 잘못된 데이터 포맷에 대한 Skip, retry 정책 미흡
-          - **해결**
+          - ***해결***
             - Spring Batch를 적용으로 Exception, skip, retry 정책 고도화
-          - **성과**
+          - ***성과***
             - 배치 서비스 이슈 발생 건 수 **70% 이상 감소**
       - layout: left
-        title: 보고서 조회용 데이터 분리로 조회 최적화
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">보고서 전용 데이터 분리로 대용량 통계 조회 성능 최적화</span>
+        # sub_title: 엔드포인트 플랫폼
         quote: > 
-          RDB → 비정규화 문서로 변환해 조회 최적화
+          PostgreSQL 데이터를 MongoDB 기반 Materialized View로 전환하여 조회 속도 향상
         description: | # this will include new lines to allow paragraphs
-          - **문제** : 
-            - 관리자가 지난 1년간 악성 코드 감염 정보를 확인하기 위한 보고서 생성시 rdb timeout 발생
-          - **원인**
-            - 대형 클라이언트를 보유한 사이트에서 rdb 쿼리 수행시 timeout 발생
-          - **해결**
-            - 배치프로세스에서 주기적으로 rdb에 저장된 데이터를 읽기 전용 비정규화문서로 변환해 mongodb에 스냅샷 저장
-            - 관리자가 보고서 생성시, mongodb에 저장된 스냅샷 데이터로 조회하도록 변경
+          - ***문제***
+            - 관리자가 지난 1년간 악성 코드 감염 현황 보고서를 생성할 때 쿼리 타임아웃으로 실패 발생
+          - ***원인***
+            - 대규모 데이터(1년치)를 직접 PostgreSQL에서 조인·집계하면서 조회 성능 한계 도달
+          - ***해결***
+            - 배치 프로세스를 통해 주기적으로 PostgreSQL 데이터를 읽어 **조회 전용 비정규화 문서**로 변환  
+            - 변환된 데이터를 MongoDB에 스냅샷(Materialized View) 형태로 저장  
+            - 보고서 조회 시, MongoDB 스냅샷을 활용해 **실시간 응답 보장**
+          - **성과**  
+            - 보고서 생성 시간 **수 분 → 수 초 단축**  
+            - 관리자가 안정적으로 장기 통계 조회 가능  
+            - 운영 DB(PostgreSQL) 부하 감소로 서비스 안정성 강화
+          
         
       - layout: left
-        title: 테스트 자동화
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">테스트 자동화 체계 구축</span>
+        # sub_title: 엔드포인트 플랫폼
         quote: > 
-          BVT 자동화로 휴먼 에러 최소화
+          BVT 자동화로 휴먼 에러 최소화 및 품질 안정성 확보
         description: | # this will include new lines to allow paragraphs
-          - ELK 스택으로 클라이언트 BVT 자동화 환경 구축 및 테스트 실패시 사내 메신저 알림 연동
-          - 팀 내 테스트 작성 추진 및 테스트 **2000건** 이상 작성
+          - ***문제*** 
+            - 빌드 검증 과정에서 수동 테스트 의존으로 휴먼 에러와 반복 작업 발생
+          - **해결***  
+            - ELK 스택 기반 **BVT(Build Verification Test) 자동화 환경** 구축  
+            - 테스트 실패 시, 사내 메신저로 실시간 알림 연동해 즉각 대응 가능  
+            - 팀 내 테스트 작성 문화 정착 및 자동화 커버리지 확대
+          - ***성과*** 
+            - ***2,000건 이상 테스트 케이스 작성***으로 주요 기능 자동화 검증  
+            - 휴먼 에러 최소화 및 빌드 안정성 강화  
+            - 배포 전 검증 속도 및 품질 확보
+            
       - layout: left
-        title: 서비스 안정화
-        sub_title: 엔드포인트 플랫폼
+        title: <span style="font-size:18px">서비스 안정화</span>
+        # sub_title: 엔드포인트 플랫폼
         quote: >
           인덱스 및 쿼리 튜닝으로 사용자 경험 개선
         description: | # this will include new lines to allow paragraphs
-          - postgres에서 ShareLock과 Row ExclusiveLock의 충돌로 deadLock 발생으로 인한 CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
+          - PostgreSQL에서 ShareLock과 Row ExclusiveLock의 충돌로 데드락 발생, CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
           - 13초 이상 소요되는 쿼리를 CTE를 활용해 1.3로 성능 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL-%EC%8A%A4%EC%B9%BC%EB%9D%BC-%EC%84%9C%EB%B8%8C-%EC%BF%BC%EB%A6%AC%EB%A5%BC-CTE%EB%A1%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0))
 
   - title: Activity
@@ -164,7 +184,7 @@ content:
         title: 백엔드 부트캠프 
         sub_title: Loopers 현직자 백엔드 과정
         description: | # this will include new lines to allow paragraphs
-          루프팩 벡엔드 1기 교육 
+          루프팩 백엔드 1기 교육 
 
   - title: Skill # Title for the section
     layout: list # Type of content section (list/text)
@@ -177,14 +197,14 @@ content:
           - JPA, QueryDSL
           - JUnit5, Mockito, RestAssured
           - Gradle, Maven
+          - JMeter
       - layout: left
-        title: DevOps
+        title: Infrastructure & Data
         description: | # this will include new lines to allow paragraphs
+          - MySQL
           - PostgreSQL
           - Kafka, Redis
           - MongoDB
-          - JMeter
-          - Git
 
   - title: Certificate # Title for the section
     layout: list # Type of content section (list/text)
