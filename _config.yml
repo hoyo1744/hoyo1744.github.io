@@ -160,7 +160,7 @@ content:
         description: | # this will include new lines to allow paragraphs
           - ***문제*** 
             - 빌드 검증 과정에서 수동 테스트 의존으로 휴먼 에러와 반복 작업 발생
-          - **해결***  
+          - ***해결***
             - ELK 스택 기반 **BVT(Build Verification Test) 자동화 환경** 구축  
             - 테스트 실패 시, 사내 메신저로 실시간 알림 연동해 즉각 대응 가능  
             - 팀 내 테스트 작성 문화 정착 및 자동화 커버리지 확대
