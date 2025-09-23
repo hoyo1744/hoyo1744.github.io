@@ -30,14 +30,13 @@ about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
   >소개  
 
-  6년차 백엔드 개발자로 엔드포인트 플랫폼을 개발·운영하고 국내 ***2,000여 고객사***가 사용하는 서비스에서 Gateway·Admin·Batch를 담당하고 있습니다.
+  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 모니터링 대시보드, 고객 단말 관리, 데이터 배치 처리 영역을 담당하고 있습니다.
 
 
   >업무 역량  
 
   대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 ***서비스 안정화***와 ***성능 개선***에 집중하고 있습니다.
   
-  피크타임 기준 파드당 ***약 455 TPS***를 안정적으로 처리하고 최대 ***20만 명의 활성 사용자*** 트래픽을 지원하고 있습니다.
 
   >개발 철학  
 
@@ -54,13 +53,15 @@ content:
     content:
       - layout: left
         title: 안랩
-        sub_title: 엔드포인트 플랫폼 개발
-        caption: 2022.01 ~ 현재
+        sub_title: 
+          Java 기반 보안·관제 플랫폼
+        caption: 
+          2022.01 ~ 현재
         quote: >
-          20만 명 활성 사용자 · 파드당 455 TPS를 안정적으로 처리하는 엔드포인트 플랫폼 개발 및 성능·안정화 주도
+          20만 명 활성 사용자 · 파드당 333 TPS를 안정적으로 처리하는 보안·관제 플랫폼 개발 및 성능·안정화 주도
         description: | 
-          - 인덱스, 쿼리 튜닝, 시스템 설정 최적화를 통한 성능 개선
-          - API 게이트웨이에서 Read·Write 트래픽 분리로 ***처리율 향상***
+          - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
+          - Read·Write 트래픽 분리로 ***Write TPS 31%*** 개선
           - Kafka Consumer ***병목 해소***
           - 레거시 배치 서비스 개선으로 ***서비스 안정화***
           - 테스트 환경 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
@@ -68,13 +69,15 @@ content:
 
       - layout: left
         title: 안랩
-        sub_title: Linux 클라이언트 개발
+        sub_title: 
+          C++ 기반 보안·관제 플랫폼
         caption: 2019.09 ~ 2021.12
         quote: >
-          C++ 리눅스 클라이언트 개발
+          C++ 기반 보안·관제 플랫폼 서버 및 클라이언트 개발 (Linux / Windows)
         description: | 
-          - 리눅스 서버 취약점 패키지 관리 클라이언트 개발
-          - 리눅스 서버 취약점 조치 클라이언트 개발
+          - Epoll 기반의 비동기 Linux 보안·관제 플랫폼 서버 개발
+          - IOCP 기반의 비동기 Windows 보안·관제 플랫폼 서버 개발
+          - Linux 서버 취약점 패키지 관리 클라이언트 개발
 
         
 
@@ -82,29 +85,27 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: <span style="font-size:18px">인증 통합 및 Read·Write 트래픽 분리로 처리율 개선</span>
-        # sub_title: 엔드포인트 플랫폼
-        quote: >
-          API Gateway 도입 및 Read·Write 트래픽 분리
+        title: <span style="font-size:18px">Read·Write 트래픽 분리로 처리율 개선</span>
+        # sub_title: Read·Write 트래픽 분리
+        # quote: >
+        #   Read·Write 트래픽 분리
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 피크타임에 트래픽이 몰리면서 ***SLA(응답 1초, 가용성 99.9%)***를 충족하지 못하는 문제 발생
+            - 피크타임에 트래픽이 몰리면서 ***SLA(응답 300ms)***를 충족하지 못하는 문제 발생
           - ***원인***
-            - 인증/인가 및 Read·Write 트래픽이 ***Blocking 작업***으로 인한 자원 고갈  
+            - Read·Write 트래픽이 ***Blocking 작업***으로 인한 자원 고갈  
           - ***해결***  
-            - 여러 서비스에서 ***중복***으로 검증하던 인증 로직을 ***API Gateway***로 통합  
-            - API Gateway에서 ***Read(캐싱)***·***Write(원장)*** 트래픽 분리로 처리율 향상  
+            - ***Read(캐싱)***·***Write(원장)*** 트래픽 분리로 처리율 향상  
             - Write 경로의 ***Tomcat 스레드 수*** 및 ***Connection Pool*** 최적화  
           - ***성과***  
-            - SLA 재달성(가용성 99.9%, P99 1초 이내)
-            - 인증/인가 로직 통합으로 유지보수 효율화  
-            - ***Read 병목 제거*** 및 Write TPS ***30%*** 개선
+            - SLA 재달성(응답 300ms)
+            - ***Read 병목 제거*** 및 ***Write TPS 31%*** 개선
             
       - layout: left
         title: <span style="font-size:18px">Kafka Consumer·Producer 배치 처리로 상태 처리 지연 문제 개선</span>
-        # sub_title: 앤드포인트 플랫폼
-        quote: >
-          Kafka 메시지 처리 성능 개선
+        # sub_title: Kafka 메시지 처리 성능 개선
+        # quote: >
+        #   Kafka 메시지 처리 성능 개선
         description: | # this will include new lines to allow paragraphs
           - ***문제***
             - 피크타임에 클라이언트 상태 처리가 지연되는 문제 발생
@@ -112,15 +113,15 @@ content:
             - Producer가 메시지를 단건 전송하고 Consumer도 단건 처리하여 처리량 저하
           - ***해결***
             - Kafka Producer·Consumer에 ***배치 전송 및 처리*** 적용
-            - ***Outbox Pattern*** 및 ***DLQ(Dead Letter Queue)*** 도입으로 메시지 유실 대비
+            - ***DLQ(Dead Letter Queue)*** 도입으로 메시지 유실 대비
           - ***성과***
             - 메시지 유실 방지 및 메시지 처리 ***TPS 15%*** 개선
-            - 상태 처리 지연 해소 및 메시지 유실에 대한 안정성 강화
+            - 메시지 유실에 대한 안정성 강화
       - layout: left
         title: <span style="font-size:18px">Legacy Batch Servie 개선으로 유지보수 효율화</span>
         #sub_title: 엔드포인트 플랫폼
-        quote: >
-          Spring Batch 적용으로 인한 서비스 안정화
+        # quote: >
+        #   Spring Batch 적용으로 인한 서비스 안정화
         description: | # this will include new lines to allow paragraphs
           - ***문제***
             - 협의되지 않은 이벤트 로그 전송시 서비스 중단 문제 발생
@@ -134,8 +135,8 @@ content:
       - layout: left
         title: <span style="font-size:18px">보고서 전용 데이터 분리로 대용량 통계 조회 성능 최적화</span>
         # sub_title: 엔드포인트 플랫폼
-        quote: > 
-          PostgreSQL 데이터를 MongoDB 기반 Materialized View로 전환하여 조회 속도 향상
+        # quote: > 
+        #   PostgreSQL 데이터를 MongoDB 기반 Materialized View로 전환하여 조회 속도 향상
         description: | # this will include new lines to allow paragraphs
           - ***문제***
             - 관리자가 지난 1년간 악성 코드 감염 현황 보고서를 생성할 때 쿼리 타임아웃으로 실패 발생
@@ -171,8 +172,8 @@ content:
       - layout: left
         title: <span style="font-size:18px">서비스 안정화</span>
         # sub_title: 엔드포인트 플랫폼
-        quote: >
-          인덱스 및 쿼리 튜닝으로 사용자 경험 개선
+        # quote: >
+        #   인덱스 및 쿼리 튜닝으로 사용자 경험 개선
         description: | # this will include new lines to allow paragraphs
           - PostgreSQL에서 ShareLock과 Row ExclusiveLock의 충돌로 데드락 발생, CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
           - 13초 이상 소요되는 쿼리를 CTE를 활용해 1.3로 성능 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL-%EC%8A%A4%EC%B9%BC%EB%9D%BC-%EC%84%9C%EB%B8%8C-%EC%BF%BC%EB%A6%AC%EB%A5%BC-CTE%EB%A1%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0))
@@ -185,6 +186,12 @@ content:
         sub_title: Loopers 현직자 백엔드 과정
         description: | # this will include new lines to allow paragraphs
           루프팩 백엔드 1기 교육 
+
+      - layout: left
+        title: 사내 테스트 스터디 
+        description: | # this will include new lines to allow paragraphs
+          팀내 테스트 도입을 위한 스터디 주도
+
 
   - title: Skill # Title for the section
     layout: list # Type of content section (list/text)
