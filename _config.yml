@@ -144,7 +144,7 @@ content:
             - Legacy Batch-Processor를 Spring Batch 기반으로 재구축하고 병렬 처리 지원
           - ***성과***
             - **MongoDB → Batch-Processor → PostgreSQL**로 이어지는 ETL 파이프라인의 처리 성능 대폭 개선
-            - SpringBatch 적용으로 서비스 안정성 및 데이터 처리 속도 향상
+            - Spring Batch 적용으로 서비스 안정성 및 데이터 처리 속도 향상
           
         
       - layout: left
