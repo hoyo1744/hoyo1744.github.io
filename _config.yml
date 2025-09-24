@@ -28,22 +28,13 @@ additional_links:
 about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  >소개  
 
-  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 모니터링 대시보드, 고객 단말 관리, 데이터 배치 처리 영역을 담당하고 있습니다.
-
-
-  >업무 역량  
+  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 모니터링 및 대시보드, V3 백신 관리, 데이터 배치 처리 영역을 담당하고 있습니다.
 
   대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 ***서비스 안정화***와 ***성능 개선***에 집중하고 있습니다.
   
-
-  >개발 철학  
-
-  원칙을 지키되, 상황에 맞는 ***실용적인 선택***을 중시합니다. 팀원들과의 기술 토론을 통해 ***유지보수성과 성능***을 함께 고려한 해결책을 도출합니다.
-
-  >성장과 공유  
-
+  원칙을 지키되, 상황에 맞는 ***실용적인 선택***을 중시하고, 팀원들과의 기술 토론을 통해 ***유지보수성과 성능***을 함께 고려한 해결책을 도출합니다.
+  
   학습한 내용과 문제 해결 경험은 블로그에 기록하고 있으며, 이를 통해 ***개인의 성장 → 조직의 성장***으로 확장하는 것을 지향합니다.
 
 content:
@@ -59,12 +50,12 @@ content:
         quote: >
           20만 명 활성 사용자 · 파드당 333 TPS를 안정적으로 처리하는 보안·관제 플랫폼 개발 및 성능·안정화 주도
         description: | 
-          - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
-          - Read·Write 트래픽 분리로 ***Write TPS 31%*** 개선
-          - Kafka Consumer ***병목 해소***
-          - 레거시 배치 서비스 개선으로 ***서비스 안정화***
-          - 테스트 환경 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
+          - Read·Write 트래픽 분리로 Write ***TPS 31%*** 개선
+          - Kafka Producer · Consumer 에서 배치 처리로 메시지 처리 ***TPS 16%*** 개선 및 메시지 유실 방지
           - PostgreSQL → MongoDB로 변환해 ***조회 최적화***
+          - MongoDB 샤딩 및 Batch-Processor 병렬처리로 ***ETL 성능 최적화***
+          - 팀내 테스트 도입 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
+          - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
 
       - layout: left
         title: 안랩
@@ -84,58 +75,44 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: <span style="font-size:18px">Read·Write 트래픽 분리로 처리율 개선</span>
-        # sub_title: Read·Write 트래픽 분리
+        title: <span style="font-size:18px">Read·Write 트래픽 분리와 최적화로 성능 개선 및 SLA 보장</span>
         quote: >
-          Read·Write 트래픽 분리
+          CQRS 기반 Read·Write 분리와 최적화로 SLA(300ms) 달성 및 TPS 31% 개선
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 피크타임에 트래픽이 몰리면서 ***SLA(응답 300ms)***를 충족하지 못하는 문제 발생
+            - 피크타임인 09:00에 트래픽이 몰리면서 ***SLA(응답 300ms)***를 충족하지 못하는 문제 발생
           - ***원인***
-            - Read·Write 트래픽이 ***Blocking 작업***으로 인한 자원 고갈  
+            - Read·Write 트래픽이 동일한 서비스에서 ***Blocking 작업***으로 처리되며 자원 고갈 발생  
           - ***해결***  
-            - ***Read(캐싱)***·***Write(원장)*** 트래픽 분리로 처리율 향상  
-            - Write 경로의 ***Tomcat 스레드 수*** 및 ***Connection Pool*** 최적화  
+            - API 서비스를 ***조회 전용(Read) 서비스***와 ***쓰기 전용(Write) 서비스***로 분리하여 **CQRS 패턴 적용**
+            - ***Read 서비스*** : 캐시를 활용해 빠른 조회 응답 제공
+            - ***Write 서비스*** : 원장 DB에만 집중하도록 하여 트랜잭션 안정성 확보
+            - Write 경로의 ***Tomcat maxThreads*** 및 ***Connection Pool*** 최적화  
           - ***성과***  
-            - SLA 재달성(응답 300ms)
-            - ***Read 병목 제거*** 및 ***Write TPS 31%*** 개선
+            - SLA 준수(응답 300ms)
+            - Read 병목 제거 및 Write ***TPS 31%*** 개선
             
       - layout: left
         title: <span style="font-size:18px">Kafka Consumer·Producer 배치 처리로 상태 처리 지연 문제 개선</span>
-        # sub_title: Kafka 메시지 처리 성능 개선
         quote: >
-          Kafka 메시지 처리 성능 개선
+          배치 전송·처리와 DLQ 도입으로 지연 문제 해소 및 메시지 유실 방지
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 피크타임에 클라이언트 상태 처리가 지연되는 문제 발생
+            - 피크타임인 09:00에 트래픽이 몰리면서 대시보드에서 V3 상태 처리가 지연되는 문제 발생
           - ***원인***
             - Producer가 메시지를 단건 전송하고 Consumer도 단건 처리하여 처리량 저하
           - ***해결***
             - Kafka Producer·Consumer에 ***배치 전송 및 처리*** 적용
             - ***DLQ(Dead Letter Queue)*** 도입으로 메시지 유실 대비
           - ***성과***
-            - 메시지 유실 방지 및 메시지 처리 ***TPS 15%*** 개선
+            - 메시지 유실 방지 및 메시지 처리 ***TPS 16%*** 개선
             - 메시지 유실에 대한 안정성 강화
-      - layout: left
-        title: <span style="font-size:18px">Legacy Batch Servie 개선으로 유지보수 효율화</span>
-        #sub_title: 엔드포인트 플랫폼
-        quote: >
-          Spring Batch 적용으로 인한 서비스 안정화
-        description: | # this will include new lines to allow paragraphs
-          - ***문제***
-            - 협의되지 않은 이벤트 로그 전송시 서비스 중단 문제 발생
-          - ***원인***
-            - 예외 핸들링 미흡
-            - 잘못된 데이터 포맷에 대한 Skip, retry 정책 미흡
-          - ***해결***
-            - Spring Batch를 적용으로 Exception, skip, retry 정책 고도화
-          - ***성과***
-            - 배치 서비스 이슈 발생 건 수 **70% 이상 감소**
+
+
       - layout: left
         title: <span style="font-size:18px">보고서 전용 데이터 분리로 대용량 통계 조회 성능 최적화</span>
-        # sub_title: 엔드포인트 플랫폼
         quote: > 
-          PostgreSQL 데이터를 MongoDB 기반 Materialized View로 전환하여 조회 속도 향상
+          조회 전용 Materialized View 도입으로 대용량 통계 보고서 성능 최적화
         description: | # this will include new lines to allow paragraphs
           - ***문제***
             - 관리자가 지난 1년간 악성 코드 감염 현황 보고서를 생성할 때 쿼리 타임아웃으로 실패 발생
@@ -149,30 +126,35 @@ content:
             - 보고서 생성 시간 **수 분 → 수 초 단축**  
             - 관리자가 안정적으로 장기 통계 조회 가능  
             - 운영 DB(PostgreSQL) 부하 감소로 서비스 안정성 강화
+
+
+      - layout: left
+        title: <span style="font-size:18px">MongoDB 샤딩 및 배치 서비스 병렬처리로 ETL 성능 최적화</span>
+        #sub_title: 엔드포인트 플랫폼
+        quote: >
+          MongoDB 샤딩 및 Spring Batch 도입으로 ETL 안정성과 처리 성능 향상
+        description: | # this will include new lines to allow paragraphs
+          - ***문제***
+            - V3 상태에 대한 ETL 처리 지연 발생
+          - ***원인***
+            - 단일 노드 MongoDB 운영으로 인한 Read · Write 성능 저하
+            - Lacacy Batch-Processor가 병렬 처리를 지원하지 않아 대량 데이터 처리에 한계
+          - ***해결***
+            - MongoDB 샤딩 적용을 통한 데이터 분산 처리
+            - Legacy Batch-Processor를 Spring Batch 기반으로 재구축하고 병렬 처리 지원
+          - ***성과***
+            - **MongoDB → Batch-Processor → PostgreSQL**로 이어지는 ETL 파이프라인의 처리 성능 대폭 개선
+            - Spring Batch 적용으로 서비스 안정성 및 데이터 처리 속도 향상
           
         
       - layout: left
-        title: <span style="font-size:18px">테스트 자동화 체계 구축</span>
-        # sub_title: 엔드포인트 플랫폼
-        quote: > 
-          BVT 자동화로 휴먼 에러 최소화 및 품질 안정성 확보
+        title: <span style="font-size:18px">테스트 도입</span>
         description: | # this will include new lines to allow paragraphs
-          - ***문제*** 
-            - 빌드 검증 과정에서 수동 테스트 의존으로 휴먼 에러와 반복 작업 발생
-          - ***해결***
-            - ELK 스택 기반 **BVT(Build Verification Test) 자동화 환경** 구축  
-            - 테스트 실패 시, 사내 메신저로 실시간 알림 연동해 즉각 대응 가능  
-            - 팀 내 테스트 작성 문화 정착 및 자동화 커버리지 확대
-          - ***성과*** 
-            - ***2,000건 이상 테스트 케이스 작성***으로 주요 기능 자동화 검증  
-            - 휴먼 에러 최소화 및 빌드 안정성 강화  
-            - 배포 전 검증 속도 및 품질 확보
+          - 팀 내 테스트 환경 미흡으로 ***TestContainer 기반 테스트 환경 구축***
+          - ELK 스택 기반 **BVT(Build Verification Test) 자동화 환경** 및 사내 메신저 알람 시스템 구축
             
       - layout: left
         title: <span style="font-size:18px">서비스 안정화</span>
-        # sub_title: 엔드포인트 플랫폼
-        # quote: >
-        #   인덱스 및 쿼리 튜닝으로 사용자 경험 개선
         description: | # this will include new lines to allow paragraphs
           - PostgreSQL에서 ShareLock과 Row ExclusiveLock의 충돌로 데드락 발생, CPU 과점유 문제 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL의-ShareLock-ExclusiveLock))
           - 13초 이상 소요되는 쿼리를 CTE를 활용해 1.3로 성능 개선 ([분석문서](https://velog.io/@hoyo1744/PostgreSQL-%EC%8A%A4%EC%B9%BC%EB%9D%BC-%EC%84%9C%EB%B8%8C-%EC%BF%BC%EB%A6%AC%EB%A5%BC-CTE%EB%A1%9C-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0))
