@@ -130,7 +130,6 @@ content:
 
       - layout: left
         title: <span style="font-size:18px">MongoDB 샤딩 및 배치 서비스 병렬처리로 ETL 성능 최적화</span>
-        #sub_title: 엔드포인트 플랫폼
         quote: >
           MongoDB 샤딩 및 Spring Batch 도입으로 ETL 안정성과 처리 성능 향상
         description: | # this will include new lines to allow paragraphs
