@@ -29,7 +29,7 @@ about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
 
-  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 모니터링 및 대시보드, V3 백신 관리, 데이터 배치 처리 영역을 담당하고 있습니다.
+  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 V3 모니터링 및 대시보드, 데이터 배치 처리 영역을 담당하고 있습니다.
 
   대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 ***서비스 안정화***와 ***성능 개선***에 집중하고 있습니다.
   
@@ -53,7 +53,7 @@ content:
           - Read·Write 트래픽 분리로 Write ***TPS 31%*** 개선
           - Kafka Producer · Consumer 에서 배치 처리로 메시지 처리 ***TPS 16%*** 개선 및 메시지 유실 방지
           - PostgreSQL → MongoDB로 변환해 ***조회 최적화***
-          - MongoDB 샤딩 및 Batch-Processor 병렬처리로 ***ETL 성능 최적화***
+          - MongoDB 샤딩, Batch-Processor 병렬처리로 ETL 처리 속도 ***9분 → 30초*** 단축
           - 팀내 테스트 도입 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
           - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
 
@@ -134,7 +134,7 @@ content:
           MongoDB 샤딩 및 Spring Batch 도입으로 ETL 안정성과 처리 성능 향상
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - V3 상태에 대한 ETL 처리 지연 발생
+            - 피크타임인 09:00에 V3 상태 변경에 대한 ETL 처리 지연 발생
           - ***원인***
             - 단일 노드 MongoDB 운영으로 인한 Read · Write 성능 저하
             - Lacacy Batch-Processor가 병렬 처리를 지원하지 않아 대량 데이터 처리에 한계
@@ -142,8 +142,8 @@ content:
             - MongoDB 샤딩 적용을 통한 데이터 분산 처리
             - Legacy Batch-Processor를 Spring Batch 기반으로 재구축하고 병렬 처리 지원
           - ***성과***
-            - **MongoDB → Batch-Processor → PostgreSQL**로 이어지는 ETL 파이프라인의 처리 성능 대폭 개선
-            - Spring Batch 적용으로 서비스 안정성 및 데이터 처리 속도 향상
+            - **MongoDB → Batch-Processor → PostgreSQL**로 이어지는 ETL 파이프라인의 처리 성능을 ***9분 -> 10~30초***로 개선
+            - Spring Batch 적용으로 Retry, Skip 정책 고도화 및 데이터 처리 속도 향상
           
         
       - layout: left
