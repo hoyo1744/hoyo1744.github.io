@@ -44,29 +44,29 @@ content:
       - layout: left
         title: 안랩
         sub_title: 
-          Java 기반 보안·관제 플랫폼
+          Java 기반 보안 위협 모니터링 플랫폼
         caption: 
           2022.01 ~ 현재
         quote: >
-          16만 명 활성 사용자 · 파드당 472 TPS를 안정적으로 처리하는 보안·관제 플랫폼 개발 및 성능·안정화 주도
+          16만 명 활성 사용자 · 파드당 472 TPS를 안정적으로 처리하는 보안 위협 모니터링 플랫폼 개발 및 성능·안정화 주도
         description: | 
           - Read·Write 트래픽 분리로 Write ***TPS 31%*** 개선
           - Kafka Producer · Consumer 에서 배치 처리로 메시지 처리 ***TPS 16%*** 개선 및 메시지 유실 방지
           - PostgreSQL → MongoDB로 변환해 ***조회 최적화***
           - MongoDB 샤딩, Batch-Processor 병렬처리로 ETL 처리 속도 ***9분 → 30초*** 단축
-          - 팀내 테스트 도입 및 ***BVT(Build Verification Test) 자동화 구축***으로 테스트 소요 시간 95% 절감
+          - 팀내 테스트 도입 및 ***BVT(Build Verification Test) 자동화 구축***으로 테스트 소요 시간 ***95% 절감***
           - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
 
       - layout: left
         title: 안랩
         sub_title: 
-          C++ 기반 보안·관제 플랫폼
+          C++ 기반 보안 위협 모니터링 플랫폼
         caption: 2019.09 ~ 2021.12
         quote: >
-          C++ 기반 보안·관제 플랫폼 서버 및 클라이언트 개발 (Linux / Windows)
+          C++ 기반 보안 위협 모니터링 플랫폼 서버 및 클라이언트 개발 (Linux / Windows)
         description: | 
-          - Epoll 기반의 비동기 Linux 보안·관제 플랫폼 서버 개발
-          - IOCP 기반의 비동기 Windows 보안·관제 플랫폼 서버 개발
+          - Epoll 기반의 비동기 Linux 보안 위협 모니터링 플랫폼 서버 개발
+          - IOCP 기반의 비동기 Windows 보안 위협 모니터링 플랫폼 서버 개발
           - Linux 서버 취약점 패키지 관리 클라이언트 개발
 
         
@@ -134,7 +134,7 @@ content:
           MongoDB 샤딩 및 Spring Batch 도입으로 ETL 안정성과 처리 성능 향상
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 피크타임인 09:00에 V3 상태 변경에 대한 ETL 처리 지연 발생
+            - 피크타임에 V3 점검 결과 반영 과정에서 ETL 처리 지연 발생
           - ***원인***
             - 단일 노드 MongoDB 운영으로 인한 Read · Write 성능 저하
             - Lacacy Batch-Processor가 병렬 처리를 지원하지 않아 대량 데이터 처리에 한계
