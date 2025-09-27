@@ -48,7 +48,7 @@ content:
         caption: 
           2022.01 ~ 현재
         quote: >
-          20만 명 활성 사용자 · 파드당 333 TPS를 안정적으로 처리하는 보안·관제 플랫폼 개발 및 성능·안정화 주도
+          16만 명 활성 사용자 · 파드당 472 TPS를 안정적으로 처리하는 보안·관제 플랫폼 개발 및 성능·안정화 주도
         description: | 
           - Read·Write 트래픽 분리로 Write ***TPS 31%*** 개선
           - Kafka Producer · Consumer 에서 배치 처리로 메시지 처리 ***TPS 16%*** 개선 및 메시지 유실 방지
