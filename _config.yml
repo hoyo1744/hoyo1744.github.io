@@ -87,7 +87,6 @@ content:
             - API 서비스를 ***조회 전용(Read) 서비스***와 ***쓰기 전용(Write) 서비스***로 분리하여 **CQRS 패턴 적용**
             - ***Read 서비스*** : 캐시를 활용해 빠른 조회 응답 제공
             - ***Write 서비스*** : 원장 DB에만 집중하도록 하여 트랜잭션 안정성 확보
-            - Write 경로의 ***Tomcat maxThreads*** 및 ***Connection Pool*** 최적화  
           - ***성과***  
             - SLO 준수(응답 300ms)
             - Read 병목 제거 및 Write ***TPS 31%*** 개선
