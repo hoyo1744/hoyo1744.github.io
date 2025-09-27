@@ -54,7 +54,7 @@ content:
           - Kafka Producer · Consumer 에서 배치 처리로 메시지 처리 ***TPS 16%*** 개선 및 메시지 유실 방지
           - PostgreSQL → MongoDB로 변환해 ***조회 최적화***
           - MongoDB 샤딩, Batch-Processor 병렬처리로 ETL 처리 속도 ***9분 → 30초*** 단축
-          - 팀내 테스트 도입 및 ***BVT(Build Verification Test)*** 자동화 구축으로 인력 효율화
+          - 팀내 테스트 도입 및 ***BVT(Build Verification Test) 자동화 구축***으로 테스트 소요 시간 95% 절감
           - 인덱스, 쿼리 튜닝, Linux 시스템 설정 최적화를 통한 성능 개선
 
       - layout: left
