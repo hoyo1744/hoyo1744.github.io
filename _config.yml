@@ -75,12 +75,12 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: <span style="font-size:18px">Read·Write 트래픽 분리와 최적화로 성능 개선 및 SLA 보장</span>
+        title: <span style="font-size:18px">Read·Write 트래픽 분리와 최적화로 성능 개선 및 SLO 보장</span>
         quote: >
-          CQRS 기반 Read·Write 분리와 최적화로 SLA(300ms) 달성 및 TPS 31% 개선
+          CQRS 기반 Read·Write 분리와 최적화로 SLO(300ms) 달성 및 TPS 31% 개선
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 피크타임인 09:00에 트래픽이 몰리면서 ***SLA(응답 300ms)***를 충족하지 못하는 문제 발생
+            - 피크타임인 09:00에 트래픽이 몰리면서 ***SLO(응답 300ms)***를 충족하지 못하는 문제 발생
           - ***원인***
             - Read·Write 트래픽이 동일한 서비스에서 ***Blocking 작업***으로 처리되며 자원 고갈 발생  
           - ***해결***  
@@ -89,7 +89,7 @@ content:
             - ***Write 서비스*** : 원장 DB에만 집중하도록 하여 트랜잭션 안정성 확보
             - Write 경로의 ***Tomcat maxThreads*** 및 ***Connection Pool*** 최적화  
           - ***성과***  
-            - SLA 준수(응답 300ms)
+            - SLO 준수(응답 300ms)
             - Read 병목 제거 및 Write ***TPS 31%*** 개선
             
       - layout: left
