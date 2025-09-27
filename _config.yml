@@ -29,7 +29,7 @@ about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
 
-  6년차 백엔드 개발자로 보안·관제 플랫폼을 개발·운영하며, 실시간 V3 모니터링 및 대시보드, 데이터 배치 처리 영역을 담당하고 있습니다.
+  6년차 백엔드 개발자로 보안 위협 모니터링 플랫폼을 개발·운영하며, 실시간 V3 모니터링 대시보드와 데이터 배치 처리 영역을 담당하고 있습니다.
 
   대규모 트래픽 환경에서도 안정적으로 운영 가능한 시스템을 목표로 ***서비스 안정화***와 ***성능 개선***에 집중하고 있습니다.
   
