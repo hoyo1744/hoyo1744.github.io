@@ -100,24 +100,24 @@ content:
           - ***문제***
             - 피크타임인 09:00에 트래픽이 몰리면서 대시보드에서 V3 상태 처리가 지연되는 문제 발생
           - ***원인***
-            - Producer가 메시지를 단건 전송하고 Consumer도 단건 처리하여 처리량 저하
+            - Producer·Consumer가 메시지를 단건 처리하여 전체 처리량 저하
           - ***해결***
             - Kafka Producer·Consumer에 ***배치 전송 및 처리*** 적용
             - ***DLQ(Dead Letter Queue)*** 도입으로 메시지 유실 대비
           - ***성과***
-            - 메시지 유실 방지 및 메시지 처리 ***TPS 16%*** 개선
+            - 메시지 처리 ***TPS 16%*** 개선
             - 메시지 유실에 대한 안정성 강화
 
 
       - layout: left
-        title: <span style="font-size:18px">보고서 전용 데이터 분리로 대용량 통계 조회 성능 최적화</span>
+        title: <span style="font-size:18px">보고서 전용 데이터 분리로 조회 성능 최적화</span>
         quote: > 
-          조회 전용 Materialized View 도입으로 대용량 통계 보고서 성능 최적화
+          조회 전용 Materialized View 도입으로 보고서 조회 성능 최적화
         description: | # this will include new lines to allow paragraphs
           - ***문제***
-            - 관리자가 지난 1년간 악성 코드 감염 현황 보고서를 생성할 때 쿼리 타임아웃으로 실패 발생
+            - 관리자가 지난 1년간 악성 코드 감염 현황 보고서를 생성할 때 쿼리 지연으로 실패하거나 오래 걸리는 문제 발생
           - ***원인***
-            - 대규모 데이터(1년치)를 직접 PostgreSQL에서 조인·집계하면서 조회 성능 한계 도달
+            - PostgreSQL에서 여러 테이블을 직접 조인하며 보고서를 생성하면서 지연 발생
           - ***해결***
             - 배치 프로세스를 통해 주기적으로 PostgreSQL 데이터를 읽어 **조회 전용 비정규화 문서**로 변환  
             - 변환된 데이터를 MongoDB에 스냅샷(Materialized View) 형태로 저장  
